@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
             	dir('springbootken') {
-            		sh './mvnw clean spring-boot:run'
+            		sh 'sudo ./mvnw clean spring-boot:run'
             	}
             }
         }
