@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-            	sh 'cd springbootken'
-            	sh 'ls'
-                sh './mvnw clean spring-boot:run'
+            	dir('springbootken') {
+            		sh './mvnw clean spring-boot:run'
+            	}
             }
         }
     }
