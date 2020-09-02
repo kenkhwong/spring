@@ -2,7 +2,7 @@ pipeline {
     agent { docker {
     	image 'maven:3.3.3' } }
     stages {
-        stage('build') {
+        stage('deploy') {
             steps {
             	dir('springbootken') {
             		sh 'mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
