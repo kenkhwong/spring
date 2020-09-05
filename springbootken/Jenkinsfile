@@ -1,12 +1,12 @@
 pipeline {
     agent { docker {
-    	image 'maven:3.3.3' } }
+    	image 'openjdk:8-alpine' } }
     stages {
-        stage('deploy') {
+        stage('Deploy') {
             steps {
             	dir('springbootken') {
-            		sh 'mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
-            		sh 'mvn clean spring-boot:run'
+            		sh './mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
+            		sh './mvnw clean spring-boot:run'
             	}
             }
         }
