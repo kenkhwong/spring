@@ -7,7 +7,7 @@ pipeline {
             	dir('springbootken') {
             		sh 'chmod +x mvnw'
             		sh './mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
-            		sh 'docker build -t spring/springbootken'
+            		sh 'docker build -t spring/springbootken .'
             	}
             }
         }
