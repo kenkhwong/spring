@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker { image 'jdk-8' } }
+	agent { docker { image 'openjdk:8-jdk-alpine' } }
     stages {
         stage('Deploy') {
             steps {
