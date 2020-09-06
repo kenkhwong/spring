@@ -4,8 +4,8 @@ pipeline {
         stage('Deploy') {
             steps {
             	dir('springbootken') {
-            		sh 'sudo ./mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
-            		sh 'sudo ./mvnw clean spring-boot:run'
+            		sh 'sudo mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
+            		sh 'sudo mvnw clean spring-boot:run'
             	}
             }
         }
