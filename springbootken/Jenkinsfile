@@ -11,9 +11,7 @@ pipeline {
             		sh 'mkdir dockerfiles'
             		sh 'mv Dockerfile dockerfiles/'
             		
-            		dir('dockerfiles') {
-            			sh 'docker build -t spring/springbootken .'
-            		}
+            		sh 'docker build -f dockerfiles/Dockerfile -t spring/springbootken .'
             	}
             }
         }
