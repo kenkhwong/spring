@@ -2,11 +2,11 @@ pipeline {
 	agent {
 		docker { image 'openjdk:8-jdk-alpine' }
 	}
-	environment {
-        DOCKER_HOST = 'gateway-ip-addr'
-    }
     stages {
         stage('Build') {
+        	environment {
+        		DOCKER_HOST = 'gateway-ip-addr'
+    		}
             steps {
             	dir('springbootken') {
             		sh 'chmod +x mvnw'
