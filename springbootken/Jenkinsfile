@@ -3,20 +3,25 @@ pipeline {
 		docker { image 'openjdk:8-jdk-alpine' }
 	}
     stages {
-        stage('Build') {
-        	environment {
-        		DOCKER_HOST = 'gateway-ip-addr'
-    		}
+        stage('Build - JDBC') {
             steps {
             	dir('springbootken') {
             		sh 'chmod +x mvnw'
             		sh './mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
-            		
-            		sh './mvnw spring-boot:build-image'
-            		//sh './mvnw clean install'
-					//sh './mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=spring/springbootken'
             	}
             }
+        }
+        stage('Build - Image') {
+        	environment {
+        		DOCKER_HOST = 'gateway-ip-addr'
+    		}
+    		steps {
+            	dir('springbootken') {
+		        	sh './mvnw spring-boot:build-image'
+		            //sh './mvnw clean install'
+					//sh './mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=spring/springbootken'
+				}
+			}
         }
     }
 }
