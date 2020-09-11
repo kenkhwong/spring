@@ -7,8 +7,9 @@ pipeline {
             		sh 'chmod +x mvnw'
             		sh './mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
 
+					sh './mvnw clean install'
 					sh './mvnw spring-boot:build-image'
-		            // sh './mvnw clean install'
+		            
 					// sh './mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=localhost:5000/springbootken'
 				}
 			}
