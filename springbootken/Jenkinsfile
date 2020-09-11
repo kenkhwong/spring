@@ -3,7 +3,7 @@ pipeline {
 		docker { image 'openjdk:8-jdk-alpine' }
 	}
     stages {
-        stage('Build - JDBC') {
+        stage('Build') {
             steps {
             	dir('springbootken') {
             		sh 'chmod +x mvnw'
