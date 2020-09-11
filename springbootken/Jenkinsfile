@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-		docker { image 'adoptopenjdk/openjdk8:ubi' }
-	}
+	agent any
     stages {
         stage('Build') {
             steps {
@@ -10,7 +8,7 @@ pipeline {
             		sh './mvnw install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true'
 
 		            sh './mvnw clean install'
-					sh './mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=springbootken'
+					sh './mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=localhost:5000/springbootken'
 				}
 			}
         }
