@@ -24,8 +24,8 @@ import org.springframework.security.core.GrantedAuthority;
 @EnableWebSecurity
 public class JiraSecurityConnector extends WebSecurityConfigurerAdapter {
 	
-	private static final String SYSTEM_SITE = "kenkhwong.atlassian.net";
-	private static final String SYSTEM_USER = "st@kenkhwong.atlassian.net";
+	private static final String SYSTEM_SITE = "example.atlassian.net";
+	private static final String SYSTEM_USER = "system@example.atlassian.net";
 	
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) 
